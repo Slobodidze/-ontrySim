@@ -1,2 +1,2 @@
-# -ontrySim
+# ContrySim
 python strategy game
