@@ -25,7 +25,12 @@ mgrass = random.randint(1, 1000)    #  Мед.Травы +
 food = random.randint(1, 3000)    #  Пища +
 water = random.randint(1, 3000)    #  Вода +
 coal = random.randint(1, 80)    #  Уголь +
-
+#Put in DataBase
+ResourcesVar[0][0] = food
+ResourcesVar[0][1] = water
+ResourcesVar[0][2] = mgrass
+ResourcesVar[0][3] = money
+ResourcesVar[0][4] = coal
 #Not Resources
 Technology = 0                        #  Наш Технологический - научный уровень, знаний
 ProductionLevel = 0             #  Наш уровень развития Промышленности
@@ -102,6 +107,7 @@ def fisher2():    #  Всё что касается Рыбаков
         fish = fish + q
     print(f'Было поймано рыб или крабов {fish}')
     food = food + fish
+    ResourcesVar[0][0] = food
     return
 
 def Line1():
@@ -128,16 +134,15 @@ def Line2():
     draw_menu()
     if mode =='main':
         main_array = [known_territory, territory, food, water, Scouts, Fisher]
-        #draw_territory(known_territory, territory)
-        #draw_food(food)
-        #draw_water(water)
         draw_main_screen(main_array)
     elif mode =='stock':
-        main_array = [known_territory, territory, food, water, Scouts, Fisher]
-        draw_main_screen(main_array)
+        #main_array = [known_territory, territory, food, water, Scouts, Fisher]
+        #draw_main_screen(main_array)
         draw_inventory()
     elif mode =='work':
-        draw_main_screen()
+        draw_scout(Scouts)
+        draw_fisher(Fisher)
+        #draw_main_screen()
     elif mode =='map':
         draw_main_screen()
     elif mode =='wiki':
@@ -153,7 +158,7 @@ def nextday():
     day = day + 1  # День закончился
     scout2()    # Скауты отрабатывают день до конца
     fisher2()   # Рыбаки отрабатывают день до конца
-    food = food - population
+    food = ResourcesVar[0][0] - population
     water = water - population
     return
 

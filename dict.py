@@ -14,11 +14,17 @@
 #mgrass = pygame.image.load('assets/materials/crafting_materials/herbal3.png')
 #money = pygame.image.load('assets/materials/crafting_materials/c_coin.png')
 
-Resources = [["Еда", "Вода", "Медикаменты", "Деньги"],
-                       ["text", "text", "text", "text"]]
+Resources = [["Еда", "Вода", "Медикаменты", "Деньги", "Уголь"],
+                       ["text", "text", "text", "text", "money"],
+                       ["text", "text", "text", "text", "money"],
+                       ["text", "text", "text", "text", "money"]]
 
-ResourcesVar = [["food", "water", "mgrass", "money"],
-                                ["text", "text", "text", "text"]]
+ResourcesVar = [["food", "water", "mgrass", "money", "coal"],
+                            ["text", "text", "text", "text", "money"],
+                            ["text", "text", "text", "text", "money"],
+                            [0, 0, 0, 0, 0]]
 
-ResourcesPic = [["food", "water","mgrass", "money"],
-                               ["text", "text", "text", "text"]]
+ResourcesPic = [["food", "water","mgrass", "money", 0],
+                            ["text", "text", "text", "text", 0],
+                            ["text", "text", "text", "text", 0],
+                            ["text", "text", "text", "text", 0]]

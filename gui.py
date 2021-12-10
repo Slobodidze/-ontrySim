@@ -46,13 +46,18 @@ mgrass = pygame.image.load('assets/materials/crafting_materials/herbal3.png')
 money = pygame.image.load('assets/materials/crafting_materials/c_coin.png')
 
 pic = 24 + 6
-quater = int(x / 4)
+quater = int((x -2 * margin) / 4)
 fifth = int((x -2 * margin)/ 5)
 line1 = 15
 line2 = 60
 line2Y = 60
-line3 = line2 - 20 + line2Y + 5
-line4 = 220
+otstup = 29
+line3 = line2 + otstup
+line4 = line3 + otstup
+line5 = line4 + otstup
+line6 = line5 + otstup
+line7 = line6 + otstup
+line8 = line7 + otstup
 
 screenY = y - margin - (line2 - 20) - line2Y
 screen_Y = screenY - 40
@@ -87,44 +92,9 @@ def draw_menu():
     for i in range(5):
         x = margin + fifth * i
         pygame.draw.rect(mainscreen, rects, (x, line2 - 20, fifth, line2Y), 3)
-        # mainscreen.blit(territory, (margin, margin+100))      # Отобразить Объект с именем "territory"
+        # mainscreen.blit(territory, (margin, margin+100))      # Отобразить картинку с именем "territory"
         names = font1_Obj1.render(f"{menu[i]}", True, (0, 0, 0))  # Создаём Текстовый Объект с именем "names" -
         mainscreen.blit(names, (x + 60, line2))         # Отобразить Объект с именем "names"
-    return
-
-def draw_main():
-    pygame.draw.rect(mainscreen, rects, (margin, line2-30, fifth, 80), 5)
-    #mainscreen.blit(territory, (margin, margin+100))                                           # Отобразить Объект с именем "territory"
-    tabcount = font1_Obj1.render(f"Main", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, (margin+50, line2))                                           # Отобразить Объект с именем "tabcount"
-    return
-
-def draw_stock():
-    pygame.draw.rect(mainscreen, rects, (fifth + margin, line2-30, fifth, 80), 5)
-    #mainscreen.blit(territory, (margin, margin+100))                                           # Отобразить Объект с именем "territory"
-    tabcount = font1_Obj1.render(f"Stock", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, (fifth + margin+50, line2))                                           # Отобразить Объект с именем "tabcount"
-    return
-
-def draw_work():
-    pygame.draw.rect(mainscreen, rects, ((2*fifth) + margin, line2-30, fifth, 80), 5)
-    #mainscreen.blit(territory, (margin, margin+100))                                           # Отобразить Объект с именем "territory"
-    tabcount = font1_Obj1.render(f"Work", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, ((2*fifth) + margin+50, line2))                                           # Отобразить Объект с именем "tabcount"
-    return
-
-def draw_map():
-    pygame.draw.rect(mainscreen, rects, ((3*fifth) + margin, line2-30, fifth, 80), 5)
-    #mainscreen.blit(territory, (margin, margin+100))                                           # Отобразить Объект с именем "territory"
-    tabcount = font1_Obj1.render(f"Map", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, ((3*fifth) + margin+50, line2))                                           # Отобразить Объект с именем "tabcount"
-    return
-
-def draw_wiki():
-    pygame.draw.rect(mainscreen, rects, ((4*fifth) + margin, line2-30, fifth - margin - 10, 80), 5)
-    #mainscreen.blit(territory, (margin, margin+100))                                           # Отобразить Объект с именем "territory"
-    tabcount = font1_Obj1.render(f"Wiki", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, ((4*fifth) + margin+50, line2))                                           # Отобразить Объект с именем "tabcount"
     return
 
 def draw_main_screen(main_array):         #  main_array = [known_territory, territory, food, water, Scouts, Fisher]
@@ -138,30 +108,49 @@ def draw_main_screen(main_array):         #  main_array = [known_territory, terr
     return
 
 def draw_territory(k,u):
-    mainscreen.blit(territory, (margin, line3-6))                                           # Отобразить Объект с именем "territory"
+    mainscreen.blit(territory, (margin, line4-6))                                           # Отобразить Объект с именем "territory"
     tabcount = font1_Obj1.render(f"Territory: {k}\{u}", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, (margin+pic, line3))                                           # Отобразить Объект с именем "tabcount"
+    mainscreen.blit(tabcount, (margin+pic, line4))                                           # Отобразить Объект с именем "tabcount"
     return
 
 def draw_food(k):
-    mainscreen.blit(food, ((1*quater) + margin, line3-6))                                             # Отобразить Объект с именем "territory"
+    mainscreen.blit(food, ((1*quater) + margin, line4-6))                                             # Отобразить Объект с именем "territory"
     #pygame.draw.rect(mainscreen, Orange, (0,160,150,40))
     tabcount = font1_Obj1.render(f"Food: {k}", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, (quater + margin+pic, line3))                                           # Отобразить Объект с именем "tabcount"
+    mainscreen.blit(tabcount, (quater + margin+pic, line4))                                           # Отобразить Объект с именем "tabcount"
     return
 
 def draw_water(k):
-    mainscreen.blit(water, ((2*quater) + margin, line3-6))                                             # Отобразить Объект с именем "territory"
+    mainscreen.blit(water, ((2*quater) + margin, line4-6))                                             # Отобразить Объект с именем "territory"
     #pygame.draw.rect(mainscreen, Orange, (0,160,150,40))
     tabcount = font1_Obj1.render(f"Water: {k}", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
-    mainscreen.blit(tabcount, ((2*quater) + margin+pic, line3))                                           # Отобразить Объект с именем "tabcount"
+    mainscreen.blit(tabcount, ((2*quater) + margin+pic, line4))                                           # Отобразить Объект с именем "tabcount"
     return
 
 def draw_inventory():
-    for i in range(4):
-        x = margin + quater * i
-        pygame.draw.rect(mainscreen, Orange, (x, line4, quater, 30), 5)
+    pygame.draw.rect(mainscreen, background, (margin, line2 - 20 + line2Y, x, screenY))     #  Зарисовываем фон вкладки
+    liney = line2 + 20                           # Стартовая линия для начала отображения таблицы
+    for line in range(4):             # Цикл повторения Линий, 4 Раза
+        liney = liney + otstup      # для каждой линии добавляем свой отступ сверху
+        for i in range(5):               # Цикл повторения Ячеек, 4 Раза
+            X = margin + fifth * i      # для каждой Ячейки добавляем свой отступ слева
+            pygame.draw.rect(mainscreen, Orange, (X, liney-6, fifth, 30), 2)      # рисуем Ячейку
+            names = font1_Obj1.render(f"{Resources[line][i]}:{ResourcesVar[line][i]}", True, (0, 0, 0))  # Создаём Текстовый Объект "names" -
+            mainscreen.blit(names, (X + 60, liney))         # Отобразить Объект "names"
     return
+
+def draw_scout(k):
+    mainscreen.blit(territory, (margin, line3-6))                                           # Отобразить Объект с именем "territory"
+    tabcount = font1_Obj1.render(f"Scouts: {k}", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
+    mainscreen.blit(tabcount, (margin+pic, line3))                                           # Отобразить Объект с именем "tabcount"
+    return
+
+def draw_fisher(k):
+    mainscreen.blit(territory, (margin, line4-6))                                           # Отобразить Объект с именем "territory"
+    tabcount = font1_Obj1.render(f"Fishers: {k}", True, (0, 0, 0))     # Создаём Текстовый Объект с именем "tabcount" -
+    mainscreen.blit(tabcount, (margin+pic, line4))                                           # Отобразить Объект с именем "tabcount"
+    return
+
 '''
 # Картинки Противника с каёмкой
  pygame.draw.line(DISPLAYSURF, RED, (154, 570), (X, 570), 10)   # DOWN
